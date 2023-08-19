@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "tsc": "tsc --project lib",
     "tsc-watch": "tsc --project lib --watch",
     "server": "nodemon --experimental-specifier-resolution=node  ./dist/index.js"
   },
