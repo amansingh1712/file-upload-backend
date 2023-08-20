@@ -15,8 +15,6 @@ try {
     app.use(express.urlencoded({ extended: true }));
     app.use(function (req, res, next) {
         res.append('Access-Control-Allow-Origin', '*');
-        res.append('Access-Control-Allow-Methods', '*');
-        res.append('Access-Control-Allow-Headers', '*');
         next();
     });
     app.use('/aws', new aws_1.AwsRouter().router);

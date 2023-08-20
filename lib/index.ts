@@ -19,8 +19,6 @@ try {
   app.use(express.urlencoded({ extended: true }));
   app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', '*');
-    res.append('Access-Control-Allow-Methods', '*');
-    res.append('Access-Control-Allow-Headers', '*');
     next();
   });
 
