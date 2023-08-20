@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as http from 'http';
 import * as cors from 'cors';
 import { config } from './config';
+import * as path from 'path';
 
 // Get DB
 import * as models from './db';
@@ -19,6 +20,12 @@ try {
 
   app.use('/aws', new AwsRouter().router);
   app.use('/file', new FileRouter().router);
+
+  // Catch all other routes and return the index file
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../dist/index.html'));
+  });
+
   /**
    * Get port from environment and store in Express.
    */
