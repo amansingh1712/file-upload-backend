@@ -9,14 +9,16 @@ var aws_1 = require("./routes/aws");
 var file_1 = require("./routes/file");
 try {
     var app = express();
-    app.use(cors());
+    // Configure CORS options
+    var corsOptions = {
+        origin: '*',
+        methods: 'GET, POST, PUT, DELETE',
+        allowedHeaders: 'Content-Type, Authorization', // Specify allowed headers
+    };
+    app.use(cors(corsOptions));
     // Parsers for POST data
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.use(function (req, res, next) {
-        res.append('Access-Control-Allow-Origin', '*');
-        next();
-    });
     app.use('/aws', new aws_1.AwsRouter().router);
     app.use('/file', new file_1.FileRouter().router);
     app.get('/ram', function (req, res) {

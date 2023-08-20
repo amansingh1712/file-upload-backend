@@ -12,15 +12,17 @@ import { FileRouter } from './routes/file';
 
 try {
   const app = express();
-  app.use(cors());
+  // Configure CORS options
+  const corsOptions = {
+    origin: '*', // Replace with the allowed origin(s)
+    methods: 'GET, POST, PUT, DELETE', // Specify the allowed HTTP methods
+    allowedHeaders: 'Content-Type, Authorization', // Specify allowed headers
+  };
+  app.use(cors(corsOptions));
 
   // Parsers for POST data
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', '*');
-    next();
-  });
 
   app.use('/aws', new AwsRouter().router);
   app.use('/file', new FileRouter().router);
