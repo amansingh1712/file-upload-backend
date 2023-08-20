@@ -20,6 +20,9 @@ try {
 
   app.use('/aws', new AwsRouter().router);
   app.use('/file', new FileRouter().router);
+  app.get('/ram', (req, res) => {
+    res.send('working fine!');
+  });
 
   /**
    * Get port from environment and store in Express.
