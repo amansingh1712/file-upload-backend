@@ -70,7 +70,7 @@ var FileRoutes = exports.FileRoutes = /** @class */ (function () {
                 case 1:
                     file = _b.sent();
                     if (!file) {
-                        res.send('No file exist');
+                        return [2 /*return*/, res.send('No file exist')];
                     }
                     redirectUrl = file.redirectUrl;
                     fileNameOriginal = path.basename(redirectUrl);

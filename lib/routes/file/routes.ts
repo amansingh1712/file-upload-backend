@@ -28,7 +28,7 @@ export class FileRoutes {
 
     const file = await Url.findOne({ shortId: shortId });
     if (!file) {
-      res.send('No file exist');
+      return res.send('No file exist');
     }
     const redirectUrl = file.redirectUrl;
     // Extract the file name from the URL
